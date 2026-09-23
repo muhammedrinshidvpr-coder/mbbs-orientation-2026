@@ -37,6 +37,11 @@ form.addEventListener('submit', async (e) => {
   const data = readForm();
   if (!validate(data)) return;
 
+  if (!SCRIPT_URL.startsWith('https://')) {
+    formError.textContent = 'Registration opens shortly. Please try again in a few minutes.';
+    return;
+  }
+
   setLoading(true);
   try {
     const res = await postWithTimeout(data);
