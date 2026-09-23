@@ -13,37 +13,68 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
   <main class="page">
     <header class="hero">
-      <p class="tagline">Your <b>Journey</b> Begins <b>Here</b></p>
-      <h1><span class="mbbs">MBBS</span><span class="orientation">Orientation</span></h1>
-      <p class="year">2026</p>
+      <p class="tagline reveal">Your <b>Journey</b> Begins <b>Here</b></p>
 
-      <div class="meta">
-        <span class="chip chip-solid">Sep 25 · 9:00 PM</span>
-        <span class="chip chip-outline">Google Meet</span>
+      <h1 class="reveal">
+        <span class="mbbs">MBBS</span>
+        <span class="orientation">Orientation</span>
+      </h1>
+
+      <div class="year-row reveal" aria-hidden="true">
+        <span class="dots"></span>
+        <span class="year">2026</span>
       </div>
 
+      <svg class="ecg" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 30 H120 L135 30 L145 10 L158 52 L170 4 L182 44 L190 30 H400" />
+      </svg>
+
+      <div class="meta reveal">
+        <span class="chip chip-solid">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 8v10H5V10h14z"/></svg>
+          Sep 25 · 9:00 PM
+        </span>
+        <span class="chip chip-outline">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="2" fill="#00832d"/><path d="M15 10.5 21 6v12l-6-4.5z" fill="#00ac47"/><rect x="2" y="6" width="6.5" height="6" rx="2" fill="#2684fc"/><rect x="2" y="12" width="6.5" height="6" rx="2" fill="#ffba00"/><rect x="8.5" y="12" width="6.5" height="6" fill="#00ac47"/><rect x="8.5" y="6" width="6.5" height="6" fill="#ea4335" rx="1"/></svg>
+          Google Meet
+        </span>
+      </div>
     </header>
 
-    <section class="card" aria-live="polite">
+    <section class="card reveal" aria-live="polite">
       <form id="form" novalidate>
-        <h2>Register</h2>
-        <p class="hint">After registering you'll be taken to the WhatsApp group where the Meet link is shared.</p>
+        <div class="card-head">
+          <h2>Register</h2>
+          <p class="hint">You'll be taken to the WhatsApp group where the Meet link is shared.</p>
+        </div>
 
         <div class="field">
           <label for="name">Full name</label>
-          <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v3h16v-3c0-2.8-3.6-5-8-5z"/></svg>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required>
+          </div>
           <p class="error" data-for="name"></p>
         </div>
 
         <div class="field">
           <label for="phone">WhatsApp number</label>
-          <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number" required>
+          <div class="input-wrap">
+            <span class="prefix">+91</span>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile number" maxlength="14" required>
+          </div>
           <p class="error" data-for="phone"></p>
         </div>
 
@@ -65,20 +96,30 @@
           <p class="error" data-for="joinedCollege"></p>
         </fieldset>
 
-        <div class="field" id="collegeField" hidden>
+        <div class="field collapsible" id="collegeField" hidden>
           <label for="collegeName">College name</label>
-          <input id="collegeName" name="collegeName" type="text" placeholder="e.g. Govt. Medical College, Kozhikode">
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2v4L12 21l7-3.8v-4L12 17l-7-3.8z"/></svg>
+            <input id="collegeName" name="collegeName" type="text" placeholder="e.g. GMC Kozhikode">
+          </div>
           <p class="error" data-for="collegeName"></p>
         </div>
 
         <p class="error form-error" id="formError"></p>
-        <button type="submit" id="submitBtn" class="btn-primary">Register Now</button>
+        <button type="submit" id="submitBtn" class="btn-primary">
+          <span class="spinner" aria-hidden="true"></span>
+          <span class="btn-label">Register Now</span>
+        </button>
       </form>
 
       <div id="result" class="result" hidden>
-        <div class="result-icon" aria-hidden="true">✓</div>
+        <div class="result-icon" aria-hidden="true">
+          <svg class="icon-check" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg>
+          <svg class="icon-info" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M26 15v14M26 36v1"/></svg>
+        </div>
         <h2 id="resultTitle"></h2>
         <p id="resultText"></p>
+        <div class="progress" id="progress"><span></span></div>
         <a id="groupBtn" class="btn-whatsapp" href="#">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2 0-5.4 4.4-9.8 9.8-9.8 2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.1 1.3 15.2.1 12 .1 5.5.1.2 5.4.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3z"/></svg>
           Join WhatsApp Group
@@ -86,9 +127,11 @@
       </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer reveal">
+      <p class="motto">Be the <b>Being</b>, Beyond the <b>Comfortable</b></p>
       <p class="brand">PROFSUMMIT</p>
-      <p>Professional Students Conference · Oct 23, 24, 25, 2026 · Kuttiady, Kozhikode North</p>
+      <p class="sub">Professional Students Conference</p>
+      <p class="venue"><b>Oct 23, 24, 25, 2026</b> · Kuttiady, Kozhikode North</p>
     </footer>
   </main>
   <script src="script.js"></script>
