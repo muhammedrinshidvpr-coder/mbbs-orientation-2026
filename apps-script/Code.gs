@@ -3,6 +3,7 @@
  * Paste into the Google Sheet's Extensions → Apps Script, then deploy as a Web App.
  */
 
+const SPREADSHEET_ID = '14-NbCUmD8ymurZn10O736JDBba2q2IJ6v6XTUnuqUmI';
 const SHEET_NAME = 'Registrations';
 const HEADERS = ['Timestamp', 'Name', 'Phone', 'Gender', 'Joined College', 'College Name'];
 const PHONE_COL = 3; // 1-based column index of Phone (Gender is the next column)
@@ -62,7 +63,7 @@ function normalizePhone(value) {
 }
 
 function getSheet() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   let sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
   if (sheet.getLastRow() === 0) {
