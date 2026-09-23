@@ -1,5 +1,5 @@
 // Paste the Apps Script Web App URL (ends with /exec) here after deploying apps-script/Code.gs
-const SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw4QDSuT-JhQxljdv3wHc_RWM-JqHLIDbgwRX9NATbFhCfWl116jYKttNGAreBSRroxtw/exec';
 
 const GROUP_LINKS = {
   Boy: 'https://chat.whatsapp.com/Epnr1xTECeA6HqDRQ3IYP1',
