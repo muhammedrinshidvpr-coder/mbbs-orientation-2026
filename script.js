@@ -94,12 +94,13 @@ function setError(field, msg) {
   const el = form.querySelector(`.error[data-for="${field}"]`);
   if (el) el.textContent = msg;
   const input = form.querySelector(`input[type="text"][name="${field}"], input[type="tel"][name="${field}"]`);
-  if (input) input.classList.toggle('invalid', Boolean(msg));
+  if (input) input.closest('.input-wrap').classList.toggle('invalid', Boolean(msg));
 }
 
 function setLoading(loading) {
   submitBtn.disabled = loading;
-  submitBtn.textContent = loading ? 'Registering…' : 'Register Now';
+  submitBtn.classList.toggle('loading', loading);
+  submitBtn.querySelector('.btn-label').textContent = loading ? 'Registering…' : 'Register Now';
 }
 
 async function postWithTimeout(data) {
@@ -126,7 +127,6 @@ function showResult(kind, gender) {
 
   document.getElementById('groupBtn').href = link;
   result.classList.toggle('duplicate', kind === 'duplicate');
-  result.querySelector('.result-icon').textContent = kind === 'duplicate' ? '!' : '✓';
 
   if (kind === 'duplicate') {
     document.getElementById('resultTitle').textContent = 'You have already registered';
@@ -136,6 +136,9 @@ function showResult(kind, gender) {
     document.getElementById('resultTitle').textContent = 'Registration successful!';
     document.getElementById('resultText').textContent =
       `Taking you to the ${groupLabel} WhatsApp group. The Google Meet link will be shared there.`;
+    const progress = document.getElementById('progress');
+    progress.style.setProperty('--redirect-ms', `${REDIRECT_DELAY_MS}ms`);
+    progress.classList.add('run');
     setTimeout(() => { window.location.href = link; }, REDIRECT_DELAY_MS);
   }
 
