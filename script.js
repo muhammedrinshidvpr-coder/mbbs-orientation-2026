@@ -123,7 +123,6 @@ async function postWithTimeout(data) {
 function showResult(kind, gender) {
   const link = GROUP_LINKS[gender] || GROUP_LINKS.Boy;
   const result = document.getElementById('result');
-  const groupLabel = gender === 'Girl' ? "girls'" : "boys'";
 
   document.getElementById('groupBtn').href = link;
   result.classList.toggle('duplicate', kind === 'duplicate');
@@ -131,11 +130,11 @@ function showResult(kind, gender) {
   if (kind === 'duplicate') {
     document.getElementById('resultTitle').textContent = 'You have already registered';
     document.getElementById('resultText').textContent =
-      `This number is already registered. If you haven't joined yet, tap below to join the ${groupLabel} WhatsApp group.`;
+      `This number is already registered. If you haven't joined yet, tap below to join the WhatsApp group.`;
   } else {
     document.getElementById('resultTitle').textContent = 'Registration successful!';
     document.getElementById('resultText').textContent =
-      `Taking you to the ${groupLabel} WhatsApp group. The Google Meet link will be shared there.`;
+      `Taking you to the WhatsApp group. The Google Meet link will be shared there.`;
     const progress = document.getElementById('progress');
     progress.style.setProperty('--redirect-ms', `${REDIRECT_DELAY_MS}ms`);
     progress.classList.add('run');
