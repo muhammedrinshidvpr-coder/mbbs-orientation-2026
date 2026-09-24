@@ -75,7 +75,7 @@ function validate(data) {
 
   if (!data.name) fail('name', 'Enter your full name');
   if (!data.phone) fail('phone', 'Enter a valid 10-digit mobile number');
-  if (!data.gender) fail('gender', 'Select Boy or Girl');
+  if (!data.gender) fail('gender', 'Select Male or Female');
   if (!data.joinedCollege) fail('joinedCollege', 'Select Yes or No');
   if (data.joinedCollege === 'Yes' && !data.collegeName) fail('collegeName', 'Enter your college name');
 
